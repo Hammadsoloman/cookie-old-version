@@ -1,14 +1,15 @@
 
 var h = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-
+var totalFooter =[];
 function Resturent(name, min, max, Avg) {
     this.name = name;
+  //  this.customers = customers;
     this.min = min;
     this.max = max;
     this.Avg = Avg;
     this.R = [];
     this.Total = 0;
-    this.totalArray = [];
+    
 }
 
 Resturent.prototype.getRandomCustomers = function (min, max) {
@@ -55,12 +56,20 @@ Resturent.prototype.render = function () {
         var z = Math.floor((this.getRandomCustomers(this.min,this.max)) * (this.Avg));
         this.Total=this.Total +z ;
         tdEl.textContent = z;
-       console.log(this.getRandomCustomers());
+        this.R.push(z);
+        console.log(this.getRandomCustomers());
     }
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
-    tdEl.textContent=this.Totale;
-    //console.log(this);
+    tdEl.textContent = this.Total;
+
+
+
+    // tdEl = document.createElement('td');
+    // trEl.appendChild(tdEl);
+    // tdEl.textContent=this.Totale;
+    // //console.log(this);
+ 
 
 };
 
@@ -91,15 +100,52 @@ function getRandomCustomers(min, max) {
     return Math.floor(Math.random() * (max - min) + 1) + min;
 };
 
+var tdEl = document.createElement('td');
+tableEl.appendChild(tdEl);
+tdEl.textContent = 'total';
 
-// I still will work on the footer , that we have on it the totale,and we can have it by making loop for the sum of the totale.
+// var totalFooter=[];
+for(var i = 0; i < h.length; i++) { 
+  // console.log(secoundResturent.R[i]);
+   var e =Math.floor(firstResturent.R[i]+secoundResturent.R[i]+thirdResturent.R[i]+fourthResturent.R[i]+fifthesturent.R[i]);
+   console.log(e);
+   totalFooter.push(e);
+   var tdEl = document.createElement('td');
+   tableEl.appendChild(tdEl);
+  tdEl.textContent =this.totalFooter[i];
 
-// footer
+}
+w=0;
+for(i=0;i<h.length;i++){
+    var tdEl = document.createElement('td');
+    tableEl.appendChild(tdEl);
+    var w =w+totalFooter[i];
+};
+tdEl.textContent=w;
+
+
+// for(var i = 0; i <14; i++){
+// var tdEl = document.createElement('td');
+// tableEl.appendChild(tdEl);
+// tdEl.textContent = totalFooter ;
+// }
+
+// console.table(totalFooter);
+
+
+
+
+
+//loop for footer
+
+
+
+
 //   var tdTotalEl = document.createElement('td');
-//         // trEl.appendChild(tdTotalEl);
+//   trEl.appendChild(tdEl);
 //        for (var i = 0; i < h.length; i++) {
-//        tdEl = document.createElement('td'); 
-//      tdTotalEl.textContent = ' totale ${tdEl};
+//        tdTotalEl = document.createElement('td'); 
+//      tdTotalEl.textContent = this.Total
 //        }
 
 
