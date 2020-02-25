@@ -3,7 +3,6 @@ var h = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm'
 
 function Resturent(name, min, max, Avg) {
     this.name = name;
-    this.customers = 0;
     this.min = min;
     this.max = max;
     this.Avg = Avg;
@@ -72,17 +71,17 @@ var firstResturent = new Resturent('Seattle', 23, 65, 6.3);
 firstResturent.getRandomCustomers();
 firstResturent.header();
 firstResturent.render();
-var secoundResturent = new Resturent('Tokyo', 0, 3, 24, 1.2, [], 0)
+var secoundResturent = new Resturent('Tokyo',3, 24, 1.2)
 secoundResturent.getRandomCustomers();
 //secoundResturent.header();
 secoundResturent.render();
-var thirdResturent = new Resturent('Dubai', 0, 11, 38, 3.7, [], 0)
+var thirdResturent = new Resturent('Dubai',11, 38, 3.7)
 //thirdResturent.header();
 thirdResturent.render();
-var fourthResturent = new Resturent('Paris', 0, 20, 38, 2.3, [], 0)
+var fourthResturent = new Resturent('Paris', 20, 38, 2.3)
 //fourthResturent.header();
 fourthResturent.render();
-var fifthesturent = new Resturent('Lima', 0, 2, 16, 4.6, [], 0)
+var fifthesturent = new Resturent('Lima', 2, 16, 4.6)
 //fifthesturent.header();
 fifthesturent.render();
 
