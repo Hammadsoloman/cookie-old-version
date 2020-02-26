@@ -3,7 +3,6 @@ var h = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm'
 var totalFooter =[];
 function Resturent(name, min, max, Avg) {
     this.name = name;
-  //  this.customers = customers;
     this.min = min;
     this.max = max;
     this.Avg = Avg;
@@ -11,16 +10,21 @@ function Resturent(name, min, max, Avg) {
     this.Total = 0;
     
 }
-
+//write Random Equation
 Resturent.prototype.getRandomCustomers = function (min, max) {
     return getRandomCustomers(min,max);
 };
+//End Random Equation
 
 
+//id and table in globale for illustrate thim once
 var container = document.getElementById('Resturent1');
 var tableEl = document.createElement('table')
 container.appendChild(tableEl);
+////End id and table in globale
 
+
+//Write the header
 Resturent.prototype.header = function () {
     var trEl = document.createElement('tr');
     tableEl.appendChild(trEl);
@@ -33,13 +37,12 @@ Resturent.prototype.header = function () {
         thEl.textContent = h[i];
     }
 }
+//end the header
 
+
+//write the render
 Resturent.prototype.render = function () {
-    // var liTotalEl = document.createElement('');
-    // liTotalEl.textContent = 'totale'+ ':' + this.Total ;
-    // ulEl.appendChild(liTotalEl);
-    // Resturent.getTheResult(); // we should call the function it inside the render to call it
-    var container = document.getElementById('Resturent1');
+     var container = document.getElementById('Resturent1');
     var sectionEl = document.createElement('section');
     container.appendChild(sectionEl);
     var h2El = document.createElement('h2');
@@ -63,58 +66,59 @@ Resturent.prototype.render = function () {
     trEl.appendChild(tdEl);
     tdEl.textContent = this.Total;
 
-
-
-    // tdEl = document.createElement('td');
-    // trEl.appendChild(tdEl);
-    // tdEl.textContent=this.Totale;
-    // //console.log(this);
- 
-
 };
 
+//End the render, its to build the inside (td) with resturant nane
+
+//
 
 
+//
 
+//intarence value for the constractor
 var firstResturent = new Resturent('Seattle', 23, 65, 6.3);
 firstResturent.getRandomCustomers();
 firstResturent.header();
 firstResturent.render();
 var secoundResturent = new Resturent('Tokyo',3, 24, 1.2)
 secoundResturent.getRandomCustomers();
-//secoundResturent.header();
 secoundResturent.render();
 var thirdResturent = new Resturent('Dubai',11, 38, 3.7)
-//thirdResturent.header();
 thirdResturent.render();
 var fourthResturent = new Resturent('Paris', 20, 38, 2.3)
-//fourthResturent.header();
 fourthResturent.render();
 var fifthesturent = new Resturent('Lima', 2, 16, 4.6)
-//fifthesturent.header();
 fifthesturent.render();
+//End the intarence value for the constractor
 
+ //
+
+
+ ///
+
+//it to complete the Random equation, and we call it by the get RandomCusomeers
 function getRandomCustomers(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + 1) + min;
 };
+//End of complete the Random equation, and we call it by the get RandomCusomeers
 
+//To write the secound total, the row
 var tdEl = document.createElement('td');
 tableEl.appendChild(tdEl);
 tdEl.textContent = 'total';
-
-// var totalFooter=[];
 for(var i = 0; i < h.length; i++) { 
-  // console.log(secoundResturent.R[i]);
    var e =Math.floor(firstResturent.R[i]+secoundResturent.R[i]+thirdResturent.R[i]+fourthResturent.R[i]+fifthesturent.R[i]);
    console.log(e);
    totalFooter.push(e);
    var tdEl = document.createElement('td');
    tableEl.appendChild(tdEl);
   tdEl.textContent =this.totalFooter[i];
-
 }
+//End of it
+
+//To write the thered total, the row
 w=0;
 for(i=0;i<h.length;i++){
     var tdEl = document.createElement('td');
@@ -123,39 +127,19 @@ for(i=0;i<h.length;i++){
 };
 tdEl.textContent=w;
 
+var resForm = document.getElementById('resForm');
+resForm.addEventListener(Submit,function(e){
+    event.preventDefult();
 
-// for(var i = 0; i <14; i++){
-// var tdEl = document.createElement('td');
-// tableEl.appendChild(tdEl);
-// tdEl.textContent = totalFooter ;
-// }
+    var name = event.target.name.value;
+    var min =event.target.min.value;
+    var max = event.targey.max.value;
+    var Avg = event.target.Avg.value;
+    var firstResturent = new Resturent(name,min, max, Avg);
+    firstResturent.render();
 
-// console.table(totalFooter);
-
-
-
-
-
-
-
-
-
-
-//   var tdTotalEl = document.createElement('td');
-//   trEl.appendChild(tdEl);
-//        for (var i = 0; i < h.length; i++) {
-//        tdTotalEl = document.createElement('td'); 
-//      tdTotalEl.textContent = this.Total
-//        }
-
-
-
-
-
-
-
-
-/*
+});
+//End of it
 
 
 
@@ -170,7 +154,9 @@ tdEl.textContent=w;
 
 
 
-*/
+
+
+
 
 
 
