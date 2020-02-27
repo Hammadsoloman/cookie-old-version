@@ -65,6 +65,7 @@ Resturent.prototype.render = function () {
     tdEl = document.createElement('td');
     trEl.appendChild(tdEl);
     tdEl.textContent = this.Total;
+    console.log("render");
 
 };
 
@@ -128,15 +129,16 @@ for(i=0;i<h.length;i++){
 tdEl.textContent=w;
 
 var resForm = document.getElementById('resForm');
-resForm.addEventListener(Submit,function(e){
-    event.preventDefult();
+resForm.addEventListener('submit',function(event){
+    event.preventDefault();
 
     var name = event.target.name.value;
     var min =event.target.min.value;
-    var max = event.targey.max.value;
+    var max = event.target.max.value;
     var Avg = event.target.Avg.value;
     var firstResturent = new Resturent(name,min, max, Avg);
     firstResturent.render();
+    console.log("add");
 
 });
 //End of it
