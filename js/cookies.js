@@ -1,6 +1,7 @@
 
 var h = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 var totalFooter =[];
+var allLocations =[];
 function Resturent(name, min, max, Avg) {
     this.name = name;
     this.min = min;
@@ -8,6 +9,7 @@ function Resturent(name, min, max, Avg) {
     this.Avg = Avg;
     this.R = [];
     this.Total = 0;
+    allLocations.push(this);
     
 }
 //write Random Equation
@@ -80,23 +82,25 @@ Resturent.prototype.render = function () {
 var firstResturent = new Resturent('Seattle', 23, 65, 6.3);
 firstResturent.getRandomCustomers();
 firstResturent.header();
-firstResturent.render();
+// firstResturent.render();
 var secoundResturent = new Resturent('Tokyo',3, 24, 1.2)
 secoundResturent.getRandomCustomers();
-secoundResturent.render();
+// secoundResturent.render();
 var thirdResturent = new Resturent('Dubai',11, 38, 3.7)
-thirdResturent.render();
+// thirdResturent.render();
 var fourthResturent = new Resturent('Paris', 20, 38, 2.3)
-fourthResturent.render();
+// fourthResturent.render();
 var fifthesturent = new Resturent('Lima', 2, 16, 4.6)
-fifthesturent.render();
+// fifthesturent.render();
 //End the intarence value for the constractor
 
  //
-
+for(i=0;i<allLocations.length;i++){
+    allLocations[i].render();
+}
 
  ///
-
+ 
 //it to complete the Random equation, and we call it by the get RandomCusomeers
 function getRandomCustomers(min, max) {
     min = Math.ceil(min);
@@ -109,13 +113,16 @@ function getRandomCustomers(min, max) {
 var tdEl = document.createElement('td');
 tableEl.appendChild(tdEl);
 tdEl.textContent = 'total';
-for(var i = 0; i < h.length; i++) { 
-   var e =Math.floor(firstResturent.R[i]+secoundResturent.R[i]+thirdResturent.R[i]+fourthResturent.R[i]+fifthesturent.R[i]);
-   console.log(e);
+for(j=0;j<h.length;j++){
+    var e=0
+for(var i = 0; i < allLocations.length; i++) { 
+   e =Math.floor(allLocations[i].R[j]+e);
+   console.log(allLocations[i]);
    totalFooter.push(e);
-   var tdEl = document.createElement('td');
+}
+var tdEl = document.createElement('td');
    tableEl.appendChild(tdEl);
-  tdEl.textContent =this.totalFooter[i];
+  tdEl.textContent =e ;
 }
 //End of it
 
@@ -141,6 +148,12 @@ resForm.addEventListener('submit',function(event){
     console.log("add");
 
 });
+
+// resForm.addEventListener('submit',function(event){
+//     for(i=0;i<h.length;i++){
+//         tableEl.deleteRow(0)
+//     }
+// }
 //End of it
 
 
